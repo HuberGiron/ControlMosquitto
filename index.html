@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Control Robot</title>
+    <script src="https://unpkg.com/mqtt/dist/mqtt.min.js"></script>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <img src="logo.png" alt="Logo" class="logo-space">
+    <select id="robotPicker" class="robot-picker" onchange="updateTopic()">
+        <option value="R1">Robot 1</option>
+        <option value="R2">Robot 2</option>
+        <option value="R3">Robot 3</option>
+        <option value="R4">Robot 4</option>
+    </select>
+    <div class="status" id="status">Esperando comando...</div>
+    <div class="button-container">
+        <button onclick="sendCommand('ADELANTE')">▲</button>
+        <div></div>
+        <button onclick="sendCommand('ATRAS')">▼</button>
+        <button onclick="sendCommand('IZQUIERDA')">◀</button>
+        <button class="center" onclick="sendCommand('DETENER')">■</button>
+        <button onclick="sendCommand('DERECHA')">▶</button>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
