@@ -10,19 +10,22 @@
 <body>
     <img src="logo.png" alt="Logo" class="logo-space">
     <select id="robotPicker" class="robot-picker" onchange="updateTopic()">
-        <option value="R1">Robot 1</option>
-        <option value="R2">Robot 2</option>
-        <option value="R3">Robot 3</option>
-        <option value="R4">Robot 4</option>
+        <option value="R1">Robot 0</option>
+        <option value="R2">Robot 1</option>
+        <option value="R3">Robot 2</option>
+        <option value="R4">Robot 3</option>
     </select>
     <div class="status" id="status">Esperando comando...</div>
     <div class="button-container">
+        <div></div>
         <button onclick="sendCommand('ADELANTE')">▲</button>
         <div></div>
-        <button onclick="sendCommand('ATRAS')">▼</button>
         <button onclick="sendCommand('IZQUIERDA')">◀</button>
         <button class="center" onclick="sendCommand('DETENER')">■</button>
         <button onclick="sendCommand('DERECHA')">▶</button>
+        <div></div>
+        <button onclick="sendCommand('ATRAS')">▼</button>
+        <div></div>
     </div>
     <script src="script.js"></script>
 </body>
