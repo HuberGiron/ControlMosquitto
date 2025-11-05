@@ -4,21 +4,23 @@ import paho.mqtt.client as mqtt  # pip install paho-mqtt
 import time
 
 # DEFINIR NÚMERO DE ROBOTS A USAR
-num_robots = int(input("Ingrese el número de robots a usar (1-4): "))
+num_robots = int(input("Ingrese el número de robots a usar (1-8): "))
+assert 1 <= num_robots <= 8, "El número de robots debe estar entre 1 y 8."
 
 R = ["DETENER"] * num_robots
+topics = [f"huber/R{i+1}/" for i in range(num_robots)]
+
 
 def on_message(client, userdata, msg):
     global R
-    topics = ["huber/R1/", "huber/R2/", "huber/R3/", "huber/R4/"]
-    for i in range(num_robots):
-        if msg.topic == topics[i]:
+    for i, t in enumerate(topics):
+        if msg.topic == t:
             R[i] = msg.payload.decode("utf-8")
 
 client = mqtt.Client()
 client.connect("test.mosquitto.org", 1883, 60)
-for i in range(num_robots):
-    client.subscribe(f"huber/R{i+1}/")
+for t in topics:
+    client.subscribe(t)
 client.on_message = on_message
 client.loop_start()
 
