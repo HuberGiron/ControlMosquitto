@@ -29,7 +29,8 @@ robot_addresses = [
     "98:D3:21:F7:B5:70",
     "98:D3:31:FA:17:5B",
     "98:D3:71:F6:63:9C",
-    "98:D3:21:F7:B4:86"
+    "98:D3:21:F7:B4:86",
+    "00:21:06:08:16:21"
 ]
 
 robots = [Bt.connect(robot_addresses[i]) for i in range(num_robots)]
@@ -58,11 +59,15 @@ def actualizar_movimiento(robot_idx, comando):
         V[robot_idx] = -8700
         W[robot_idx] = 0
     elif comando == "DERECHA":
+        # V[robot_idx] = 4000
+        # W[robot_idx] = 0
         V[robot_idx] = 0
         W[robot_idx] = 70
     elif comando == "IZQUIERDA":
         V[robot_idx] = 0
         W[robot_idx] = -70
+        # V[robot_idx] = 2000
+        # W[robot_idx] = 0
 
 while True:
     for i in range(num_robots):
